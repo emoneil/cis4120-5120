@@ -1,0 +1,335 @@
+/* site flow inspired by CS 1300 at Brown University (https://cs.brown.edu/courses/csci1300/) */
+/* symbols for titles (key links, schedule, staff) from https://openmoji.org/ */
+/* symbols for syllabus and schedule key links from Google Material Symbols */
+ @import url('https://fonts.googleapis.com/css?family=Roboto');   
+
+ html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-color: rgb(185, 218, 247);
+    --secondary-color: #faf9f6;
+    --accent-color: #4a72b7;
+    --secondary-accent-color: #1c2b56;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+section, header {
+    background-color: white;
+    padding: 32px;
+}
+
+body {
+    font-family: 'Roboto';
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+img, video {
+    display: block;
+    max-width: 100%;
+}
+
+section:nth-child(even) {
+    background-color: var(--primary-color);
+}
+
+section:nth-child(odd) {
+    background-color: var(--secondary-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    padding-top: 2rem;
+}
+
+.title {
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
+
+.with-symbol {
+    display: flex;
+    align-items: left;
+    justify-content:left;
+}
+
+.title, .title-description-flex, .note {
+    padding: 0 5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5rem;
+}
+
+nav > .flex-row > a {
+    margin-bottom: 30px;
+    display: block;
+    margin-left: 5vw;
+    justify-content: space-between;
+}
+
+.logo-image {
+    width: 110px;
+    height: 110px;
+}
+
+.site-footer-link {
+    color: var(--secondary-accent-color);
+    text-decoration: none;
+}
+
+/* link underline on hover */
+/* https://css-tricks.com/css-link-hover-effects/ */
+.link {
+    text-decoration: none;
+    position: relative;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+  
+.link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: var(--secondary-accent-color);
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
+  
+.link:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+
+.title-flex {
+    display: flex;
+    justify-content: left;
+    padding: 0;
+    z-index: 1;
+    tab-index: -1;
+}
+
+.title-description-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    tab-index: -1;
+    width: fit-content;
+    max-width: 70vw;
+}
+
+.video-wrapper {
+    position: relative;
+    z-index: 1;
+    width: clamp(30rem, 50vw, 500px);
+    left: -50px;
+}
+
+video {
+    border-radius: 30px;
+    position: relative;
+}
+
+#cat-video {
+    position: relative;
+    max-width: 5%;
+}
+
+.title-wrapper {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1;
+    z-index: 5;
+}
+
+.button {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    color: var(--secondary-accent-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    line-height: 25px;
+    background-color: white;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black; 
+    border-radius: 5px;
+    border: 3px solid var(--secondary-accent-color);
+}
+
+.button:hover {
+    background-color: var(--secondary-accent-color);
+    color: white;
+}
+
+.small-button {
+    display: block;
+    padding: 5px 10px;
+    width: fit-content;
+}
+
+.iframe-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 5rem;
+    width: 83vw;
+}
+
+.note > p {
+    margin-bottom: .5rem;
+}
+
+.note > a {
+    margin-top: 1rem;
+}
+
+.embedded-iframe {
+    display: block;
+    width: 100%;
+    height: max(60vh, 600px);
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    height: 25px;
+    width: auto;
+    margin-right: 10px;
+}
+
+#key-links-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0 15rem;
+}
+
+.staff-flex-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-row-gap: 1.5em;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5rem;
+    margin-bottom: 2rem;
+}
+
+.staff-photo img {
+    width: 150px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .title-description-flex, .title, .note {
+        padding: 0 5%;
+    }
+    .video-wrapper {
+        padding-left: 2rem;
+    }
+    .iframe-wrapper {
+        margin: 0 5%;
+        width: 80vw;
+    }
+    #key-links-container {
+        padding: 0 5rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        padding: 0; 
+        width: auto;
+    }
+    .nav-flex {
+        display: none;
+    }
+    .video-wrapper {
+        display: none;
+    }
+    .title-description-flex {
+        margin: 30px 0;
+    }
+    .title-flex {
+        justify-content: flex-start;
+    }
+    .title-description-flex, .title {
+        max-width: 90vw;
+    }
+    #key-links-container {
+        flex-direction: column;
+        padding: 0 5%;
+    }
+    .note {
+        padding: 0 5%;
+    }
+    #key-links-container .flex-column, #key-links-container .button {
+        width: 80%;
+    }
+    #staff-row .note {
+        width: 95%;
+        text-align: center;
+    }
+    .staff-photo img {
+        width: 120px;
+    }
+    #key-links-container {
+        font-size: 125%;
+    }
+    #key-links-container > .flex-column:not(:first-child) {
+        margin-top: 1rem;
+    }
+    section {
+        padding: 3rem 1rem;
+    }
+}
